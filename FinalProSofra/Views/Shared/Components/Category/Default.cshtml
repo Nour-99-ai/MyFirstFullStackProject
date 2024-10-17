@@ -1,0 +1,42 @@
+﻿@model IEnumerable<FinalProSofra.Models.Category>
+
+
+<!-- Categories -->
+<section class="restaurant-list section-b-space banner-section ratio3_2">
+    <div id="categories-section">
+        <div class="container">
+            <div class="title restaurant-title w-border pb-0">
+                <h2>Categories</h2>
+                <div class="loader-line"></div>
+            </div>
+
+            <div class="row">
+                @foreach (var category in Model)
+                {
+                    <div class="col-md-4 col-sm-6 mb-4">
+                        <div class="vertical-product-box h-100" style="transition: transform 0.3s ease;">
+                            <div class="vertical-product-box-img">
+                                <img src="@category.Image" class="img-fluid" alt="@category.CategoryName" style="width: 100%; height: auto;">
+                            </div>
+                            <div class="vertical-product-body text-center">
+                                <h5 class="vertical-product-title" style="font-size: 1.5rem;">
+                                   
+                                    <a asp-controller="Home" asp-action="Product" asp-route-id="@category.CategoryId" class="text-dark">
+                                        @category.CategoryName
+                                    </a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- إضافة تأثير التحويم -->
+<style>
+    .vertical-product-box:hover {
+        transform: scale(1.05); /* تكبير الكارد عند التحويم */
+    }
+</style>

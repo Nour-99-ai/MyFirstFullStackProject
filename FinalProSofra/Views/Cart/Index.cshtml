@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model List<CartItem>
+
+<div class="order-summery-section">
+    <h3 class="fw-semibold">Cart Items</h3>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <div class="horizontal-product-box">
+                    <div class="product-content">
+                        <h5>@item.Product.ProductName</h5>
+                        <h6>$@item.Price</h6>
+                        <h6>Quantity: @item.Quantity</h6>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+    <h5>Total: $@Model.Sum(item => item.Price * item.Quantity)</h5>
+</div>
+
+

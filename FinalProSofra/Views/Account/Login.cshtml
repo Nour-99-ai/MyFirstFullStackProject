@@ -1,0 +1,47 @@
+﻿@model FinalProSofra.Models.ViewModels.LoginViewModel
+
+<!-- signin page start -->
+<section class="login-hero-section section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5 col-lg-6 col-md-10 m-auto">
+                <div class="login-data">
+                    <form asp-action="Login" method="post" class="auth-form">
+                        <h2>Sign in</h2>
+                        <h5>
+                            or
+                            <a asp-action="Register"><span class="theme-color">create an account</span></a>
+                        </h5>
+
+                        <!-- Phone Number Field -->
+                        <div class="form-input">
+                            <input asp-for="PhoneNumber" class="form-control" placeholder="Enter your number" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            <i class="ri-phone-line"></i>
+                        </div>
+
+                        <!-- Password Field -->
+                        <div class="form-input">
+                            <input asp-for="Password" class="form-control" placeholder="Enter your password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                            <i class="ri-lock-password-line"></i>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn theme-btn submit-btn w-100 rounded-2">CONTINUE</button>
+
+                        <p class="fw-normal content-color">
+                            By creating an account, I accept the
+                            <span class="fw-semibold">
+                                Terms & Conditions & Privacy Policy
+                            </span>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- signin page end -->
+<!-- Client-side validation support -->
+

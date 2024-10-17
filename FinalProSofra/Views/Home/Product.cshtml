@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Product>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2 text-center">
+            <div class="section-title">
+                <h3><span class="orange-text">Products</span></h3>
+                <p>Showing products for the selected category.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Price Filter Form -->
+<form method="get" asp-controller="Home" asp-action="Product">
+    <input type="hidden" name="categoryId" value="@ViewBag.CategoryId" />
+    <div class="row">
+        <div class="col-md-4">
+            <input type="number" name="minPrice" placeholder="Min Price" class="form-control" step="0.01" value="@ViewBag.MinPrice" />
+        </div>
+        <div class="col-md-4">
+            <input type="number" name="maxPrice" placeholder="Max Price" class="form-control" step="0.01" value="@ViewBag.MaxPrice" />
+        </div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary">Filter</button>
+            <button type="button" class="btn btn-secondary" onclick="resetFilters()">Clear Filters</button>
+        </div>
+    </div>
+</form>
+
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-lg-2 col-md-6 text-center">
+            <div class="single-product-item">
+                <div class="product-image">
+                    <a href="single-product.html">
+                        <img src="@product.Image" alt="@product.ProductName" width="100" height="100">
+                    </a>
+                </div>
+                <h3>
+                    <br />
+                    @product.ProductName
+                </h3>
+                <p class="product-price">@product.Price Jd</p>
+                <a asp-controller="Home" asp-action="ProductDetails" asp-route-id="@product.ProductId">View Details</a>
+                <a asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@product.ProductId">Add To Cart</a>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    function resetFilters() {
+        document.querySelector('input[name="minPrice"]').value = '';
+        document.querySelector('input[name="maxPrice"]').value = '';
+    }
+</script>

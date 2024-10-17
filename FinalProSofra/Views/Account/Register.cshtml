@@ -1,0 +1,67 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<!-- page head section starts -->
+<section class="page-head-section">
+    <div class="container page-heading">
+        <h2 class="h3 mb-3 text-white text-center">Create Account</h2>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb flex-lg-nowrap justify-content-center justify-content-lg-star">
+                <li class="breadcrumb-item">
+                    <a asp-controller="Home" asp-action="Index"><i class="ri-home-line"></i>Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Signup</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<!-- page head section end -->
+
+<!-- signup page start -->
+<section class="login-hero-section section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5 col-lg-6 col-md-10 m-auto">
+                <div class="login-data">
+                    <!-- عرض جميع الأخطاء العامة في أعلى النموذج -->
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <form asp-action="Register" method="post" class="auth-form">
+                        <h2>Sign up</h2>
+                        <h5>
+                            or
+                            <a asp-controller="Account" asp-action="Login"><span class="theme-color">login to your account</span></a>
+                        </h5>
+
+                        <div class="form-input">
+                            <input asp-for="Name" class="form-control" placeholder="Enter your name" />
+                            <i class="ri-user-3-line"></i>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-input">
+                            <input asp-for="PhoneNumber" class="form-control" placeholder="Enter your number" />
+                            <i class="ri-phone-line"></i>
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-input">
+                            <input asp-for="Password" class="form-control" placeholder="Enter your password" />
+                            <i class="ri-lock-password-line"></i>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn theme-btn submit-btn w-100 rounded-2">CONTINUE</button>
+
+                        <p class="fw-normal content-color">
+                            By creating an account, I accept the
+                            <span class="fw-semibold">Terms & Conditions & Privacy Policy</span>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewData["Title"] = "Contact";
+}
+
+
+<!-- page head section starts -->
+<section class="page-head-section">
+    <div class="container page-heading">
+        <h2 class="h3 mb-3 text-white text-center">Contact</h2>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb flex-lg-nowrap justify-content-center justify-content-lg-star">
+                <li class="breadcrumb-item">
+                    <a href="index.html"><i class="ri-home-line"></i>Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Contact</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<!-- page head section end -->
+<!-- contact section starts -->
+
+<!-- Page Content Here -->
+<section class="section-b-space">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-xl-8">
+                <div class="contact-form">
+                    <form id="contactForm" asp-action="SubmitForm" method="post" class="row g-3">
+                        <div class="col-md-6">
+                            <label for="inputFirstname" class="form-label mt-0">First Name</label>
+                            <input type="text" class="form-control" id="inputFirstname" placeholder="Enter your first name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputLastname" class="form-label mt-0">Last Name</label>
+                            <input type="text" class="form-control" id="inputLastname" placeholder="Enter your last name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPhone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="inputPhone" placeholder="Enter your number" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="inputMessage" class="form-label">How Can We Help You?</label>
+                            <textarea class="form-control" id="inputMessage" rows="3" placeholder="Hi there, I would like to...." required></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <button id="submitForm" class="btn theme-btn mt-0">SUBMIT</button>
+                        </div>
+                    </form>
+
+                    <!-- رسالة التأكيد -->
+                    <div id="confirmationMessage" style="display:none;">
+                        <p class="text-success">Thank you! We will get in touch with you shortly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript Part -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#submitForm').on('click', function (e) {
+            e.preventDefault(); // منع إعادة تحميل الصفحة
+
+            // تأكيد أن النموذج يحتوي على بيانات صحيحة
+            if ($('#contactForm')[0].checkValidity()) {
+                // إظهار رسالة التأكيد
+                $('#confirmationMessage').fadeIn();
+
+                // مسح الحقول بعد تقديم البيانات
+                $('#contactForm')[0].reset();
+            }
+        });
+    });
+</script>
